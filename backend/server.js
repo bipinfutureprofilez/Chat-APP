@@ -4,6 +4,11 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
+const cookieParser = require('cookie-parser')
+
+app.use(express.json())
+app.use(cookieParser())
+
 const connectDB = require('./db/connect')
 
 app.use(express.json())
@@ -16,8 +21,11 @@ app.get('/', (req, res) => {
 
 // router middleware
 const authRouter = require('./routes/auth')
+const messageRouter = require('./routes/messages')
+const authentication = require('./middleware/authentication')
 
 app.use('/auth', authRouter)
+app.use('/message', authentication, messageRouter)
 
 // Error & Not found middleware
 const errorHanderMiddleware = require('./middleware/errorHandlerMiddleware')
