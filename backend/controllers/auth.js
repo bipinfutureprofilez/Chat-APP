@@ -1,13 +1,13 @@
 const login = async (req, res) => {
-    res.send('User Login')
+    res.send(req.body)
 }
 
 const register = async (req, res) => {
-    res.send('User register')
+    res.send(req.body)
 }
 
 const logout = async (req, res) => {
-    res.send('User logout')
+    res.send(req.body)
 }
 
 module.exports = {
