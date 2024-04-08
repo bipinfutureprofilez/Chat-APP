@@ -22,10 +22,12 @@ app.get('/', (req, res) => {
 // router middleware
 const authRouter = require('./routes/auth')
 const messageRouter = require('./routes/messages')
+const usersRouter = require('./routes/user')
 const authentication = require('./middleware/authentication')
 
 app.use('/auth', authRouter)
 app.use('/message', authentication, messageRouter)
+app.use("/users", authentication, usersRouter);
 
 // Error & Not found middleware
 const errorHanderMiddleware = require('./middleware/errorHandlerMiddleware')
