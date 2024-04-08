@@ -13,7 +13,6 @@ const senMessage = async (req, res) => {
     })
 
     if (!conversation) {
-        console.log(senderId + ' : ' + receiverId);
         conversation = await Conversations.create({
             participants: [senderId, receiverId]
         })
