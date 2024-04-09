@@ -6,7 +6,8 @@
   --bgColor2: #303841;
   --bgColor3: #36404a;
   --primaryTextColor: #eff2f7;
-  --themeButtonBg: #7269ef
+  --themeButtonBg: #7269ef;
+  --borderColor: #36404a;
 }
 *{padding: 0;margin: 0;box-sizing: border-box;}
 body { padding: 0; margin: 0;font-family: var(--primaryFont);background-color: var(--primaryBgcolor);}
@@ -33,7 +34,7 @@ p:empty {
 
 /* Login */
 .auth-wrapper { max-width: 500px; padding: 50px; background: var(--bgColor2); width: 100%; } 
-.page-wrapper { display: flex; align-items: center; justify-content: center; height: 100vh; overflow-y: auto; } 
+.page-wrapper { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; height: 100vh; overflow-y: auto; padding: 30px;} 
 .auth-wrapper h3 { color: var(--primaryTextColor); text-align: center; font-size: 24px; font-weight: 500; text-transform: uppercase; margin-bottom: 30px; }
 
 .input-group label { display: block; font-size: 15px; text-transform: capitalize; color: var(--primaryTextColor); line-height: 20px; margin-bottom: 4px; } 
@@ -47,5 +48,64 @@ p:empty {
 .radio-group label { margin: 0; margin-left: 7px; } 
 .radio-group:not(:last-child) { margin-right: 25px; }
 
+.form-bottom-text { display: block; font-size: 15px; text-transform: capitalize; color: var(--primaryTextColor); line-height: 20px; margin-bottom: 4px; text-align: center; } 
+.form-bottom-text a { color: var(--themeButtonBg); }
 
+.chat-system-wrapper { width: 100%; max-width: 800px; display: flex; flex-wrap: wrap; background: var(--bgColor2); } 
+.chat-sidebar { width: 250px; padding: 15px; border-right: 1px solid var(--borderColor); } 
+.message-container { width: calc(100% - 250px); } 
+.reciever-data { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--borderColor); } 
+.messages-list { padding: 15px; }
+
+.conversatio-item { display: flex; align-items: center; padding: 10px 0; cursor: pointer; } 
+.conversatio-item > img,.reciever-data > img { width: 40px; height: 40px; border-radius: 100%; margin-right: 10px; } 
+.chatusers { padding: 15px 0; } 
+.user-cnt { display: flex; align-items: flex-start; width: calc(100% - 50px); justify-content: space-between; align-items: center; } 
+.last-seen-data { font-size: 11px; font-weight: 400; color: var(--primaryTextColor); opacity: 0.7; } 
+.left-msg h4 { font-size: 14px; color: var(--primaryTextColor); } 
+.conversatio-item:not(:last-child) { border-bottom: 1px solid var(--borderColor); } 
+.reciever-data h4 { font-size: 14px; color: var(--primaryTextColor); } 
+.message-box { display: flex; } 
+.message-box img { width: 40px; height: 40px; border-radius: 100%; margin-right: 10px; } 
+.message { padding: 12px 15px; background: var(--bgColor3); border-radius: 20px 20px 20px 0; font-size: 13px; font-weight: 400; color: var(--primaryTextColor); opacity: 0.7; } 
+.msg-time { margin: 4px 0 0; font-size: 11px; font-weight: 400; color: var(--primaryTextColor); opacity: 0.7; } 
+.message-box:not(:last-child) { margin-bottom: 20px; }
+
+.search-user .input-group { position: relative; } 
+.search-user svg { position: absolute; top: 13px; width: 22px; height: 22px; left: 10px; color: var(--primaryTextColor); opacity: 0.5; } 
+.search-user .form-control { border-radius: 10px; font-size: 14px; font-weight: 500; padding-left: 40px; }
+
+.chat-system-wrapper { height: 100%; } 
+.messages-list { height: calc(100% - 150px); overflow-y: auto; } 
+.message-container { height: 100%; } 
+.chat-sidebar { height: 100%;position: relative; } 
+.chatusers { height: calc(100% - 86px); overflow-y: auto; }
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.message-input-box .input-group { display: flex; align-items: center; padding: 15px; } 
+.message-input-box { border-top: 1px solid var(--borderColor); } 
+.message-input-box .input-group .form-control { width: calc(100% - 65px); margin-right: 17px;height: 48px;font-size: 14px; } 
+.message-send { background: var(--themeButtonBg); border: 1px solid var(--themeButtonBg); width: 48px; height: 48px; border-radius: 100%; } 
+.message-send svg { font-size: 23px; margin-left: -4px; margin-bottom: -4px; } 
+.logout-box { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; } 
+.logout-box button { background: transparent; border: none; padding: 0; cursor: pointer; } 
+.logout-box button svg { color: var(--primaryTextColor); opacity: 0.7; font-size: 20px; }
 
