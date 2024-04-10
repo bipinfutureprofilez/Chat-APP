@@ -1,10 +1,17 @@
 import React from 'react'
 
-export default function InputFields(props) {
+export default function InputFields({ labelText, type, name, value, onChangeHandler }) {
   return (
-    <div className='input-group'>
-          <label htmlFor={props.name}>{props.labelText}</label>
-          <input type={props.type} name={props.name} id={props.name} className='form-control' />
+    <div className="input-group">
+      <label htmlFor={name}>{labelText}</label>
+      <input
+        type={type}
+        name={name}
+        id={name}
+        className="form-control"
+        value={value}
+        onChange={onChangeHandler}
+      />
     </div>
-  )
+  );
 }
