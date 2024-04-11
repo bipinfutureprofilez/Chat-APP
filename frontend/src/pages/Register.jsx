@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 import InputFields from '../component/InputFields'
 import RadioFields from '../component/RadioFields'
 import { Link } from 'react-router-dom'
@@ -10,7 +11,7 @@ export default function Register() {
     email: "",
     gender: "",
     password: "",
-    conformpassword: "",
+    confirmPassword: "",
   });
 
   const onGenderChange = (gen) => {
@@ -23,9 +24,14 @@ export default function Register() {
     setInputs(values => ({...values, [name]: value}))
   }
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    // console.log(inputs);
+    try {
+        const response = await axios.post('/api/auth/register', inputs);
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   return (
@@ -52,16 +58,19 @@ export default function Register() {
             <RadioFields
               labelText="Male"
               name="gender"
+              value="male"
               onGenderChange={onGenderChange}
             />
             <RadioFields
               labelText="Female"
               name="gender"
+              value="female"
               onGenderChange={onGenderChange}
             />
             <RadioFields
               labelText="Other"
               name="gender"
+              value="other"
               onGenderChange={onGenderChange}
             />
           </div>
@@ -76,7 +85,7 @@ export default function Register() {
         <InputFields
           type="password"
           labelText="Confirm Password"
-          name="conformpassword"
+          name="confirmPassword"
           value={inputs.confirmPassword}
           onChangeHandler={handleChange}
         />

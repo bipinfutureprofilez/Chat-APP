@@ -37,8 +37,8 @@ p:empty {
 .page-wrapper { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; height: 100vh; overflow-y: auto; padding: 30px;} 
 .auth-wrapper h3 { color: var(--primaryTextColor); text-align: center; font-size: 24px; font-weight: 500; text-transform: uppercase; margin-bottom: 30px; }
 
-.input-group label { display: block; font-size: 15px; text-transform: capitalize; color: var(--primaryTextColor); line-height: 20px; margin-bottom: 4px; } 
-.input-group .form-control { width: 100%; font-size: 16px; background: var(--bgColor3); border: none; padding: 15px 10px;color: var(--primaryTextColor); } 
+.input-group label {display: block; font-size: 15px; text-transform: capitalize; color: var(--primaryTextColor); line-height: 20px; margin-bottom: 4px; width: 100%;} 
+.input-group .form-control { width: 100%; font-size: 16px; background: var(--bgColor3); border: none; padding: 15px 10px;color: var(--primaryTextColor);border-radius: 0; } 
 .auth-wrapper form > *:not(:last-child) { margin-bottom: 20px; } 
 .theme-btn {cursor: pointer; background: var(--themeButtonBg); border: 1px solid var(--themeButtonBg); padding: 10px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; } 
 .auth-wrapper form .theme-btn { width: 100%; padding: 15px; }
@@ -108,4 +108,25 @@ p:empty {
 .logout-box { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; } 
 .logout-box button { background: transparent; border: none; padding: 0; cursor: pointer; } 
 .logout-box button svg { color: var(--primaryTextColor); opacity: 0.7; font-size: 20px; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff;
+}
+
+.radio-lists .form-check { margin-right: 18px; margin-bottom: 0; } 
+label.form-check-label { margin: 0; display: inline-block; } 
+.form-check input[type=radio] { margin-right: 7px; background: transparent; border: 1px solid #ccc; } 
+.form-check input[type=radio]:checked { background-color: var(--themeButtonBg); border-color: var(--themeButtonBg); }
+
+
 
