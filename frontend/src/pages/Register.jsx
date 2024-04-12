@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import InputFields from '../component/InputFields'
 import RadioFields from '../component/RadioFields'
 import { Link } from 'react-router-dom'
+import RegisterHook from '../hooks/RegisterHook'
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Register() {
+
+  
+  const { authUser } = useAuthContext();
+  const { signUp, processing } = RegisterHook()
 
   const [inputs, setInputs] = useState({
     name: "",
@@ -26,12 +31,7 @@ export default function Register() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    try {
-        const response = await axios.post('/api/auth/register', inputs);
-        console.log(response);
-    } catch (error) {
-        console.log(error);
-    }
+    await signUp(inputs);
   }
 
   return (
@@ -89,7 +89,7 @@ export default function Register() {
           value={inputs.confirmPassword}
           onChangeHandler={handleChange}
         />
-        <input type="submit" value="Submit" className="theme-btn" />
+        <input type="submit" value={processing ? 'Processing...' : 'Submit'} className="theme-btn" />
         <div className="form-bottom-text">
           do have an account? <Link to="/login">Signin</Link>
         </div>
