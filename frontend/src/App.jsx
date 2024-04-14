@@ -9,7 +9,7 @@ import {
   Register,
 } from './pages';
 import { useAuthContext } from './context/AuthContext';
-
+ 
 
 function App() {
   const { authUser } = useAuthContext();

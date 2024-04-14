@@ -6,7 +6,7 @@ import useLoginHook from '../hooks/LoginHook'
 export default function Login() {
 
   const [inputs, setInputs] = useState({email: '', password: ''});
-  const { signIn } = useLoginHook();
+  const { signIn, processing } = useLoginHook();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -20,16 +20,28 @@ export default function Login() {
   }
 
   return (
-    <div className='auth-wrapper'>
-        <h3>Login</h3>
-        <form onSubmit={HandeOnsubmit}>
-          <InputFields type='email' labelText='Email' name='email' value={inputs.email} onChangeHandler={handleChange} />
-          <InputFields type='password' labelText='Password' name='password' value={inputs.password} onChangeHandler={handleChange} />
-          <input type="submit" value="Submit" className='theme-btn' />
-          <div className="form-bottom-text">
-            don't have an account? <Link to='/register'>Signup</Link>
-          </div>
-        </form>
+    <div className="auth-wrapper">
+      <h3>Login</h3>
+      <form onSubmit={HandeOnsubmit}>
+        <InputFields
+          type="email"
+          labelText="Email"
+          name="email"
+          value={inputs.email}
+          onChangeHandler={handleChange}
+        />
+        <InputFields
+          type="password"
+          labelText="Password"
+          name="password"
+          value={inputs.password}
+          onChangeHandler={handleChange}
+        />
+        <input type="submit" value={processing ? 'Processing...' : 'Submit'} className="theme-btn" />
+        <div className="form-bottom-text">
+          don't have an account? <Link to="/register">Signup</Link>
+        </div>
+      </form>
     </div>
-  )
+  );
 }

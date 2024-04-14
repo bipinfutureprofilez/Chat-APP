@@ -1,6 +1,11 @@
 import React from 'react'
+import useGetConversations from '../hooks/useGetConversations';
 
 export default function Conversation() {
+
+  const { conversations } = useGetConversations();
+  console.log(conversations);
+
   return (
     <>
       <div className="conversatio-item">

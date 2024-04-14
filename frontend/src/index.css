@@ -73,7 +73,7 @@ p:empty {
 
 .search-user .input-group { position: relative; } 
 .search-user svg { position: absolute; top: 13px; width: 22px; height: 22px; left: 10px; color: var(--primaryTextColor); opacity: 0.5;z-index: 4; } 
-.search-user .form-control { border-radius: 10px; font-size: 14px; font-weight: 500; padding-left: 40px; }
+.search-user .form-control { border-radius: 10px !important; font-size: 14px; font-weight: 500; padding-left: 40px; }
 
 .chat-system-wrapper { height: 100%; max-height: 580px;} 
 .messages-list { height: calc(100% - 150px); overflow-y: auto; } 

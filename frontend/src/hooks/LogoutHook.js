@@ -8,9 +8,12 @@ const useLogoutHook = () => {
 
     const logout = async () => {
         try {
-            const response = await axios.post('/api/auth/logout');
+            const response = await axios.post(
+              "http://localhost:5000/api/auth/logout"
+            );
             localStorage.removeItem('chat-user')
             setAuthUser(null)
+            toast.success('Logout Sucessfully');
         } catch (error) {
             toast.error(error.message)
         }
