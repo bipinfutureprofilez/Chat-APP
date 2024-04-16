@@ -21,7 +21,11 @@ const useLoginHook = () => {
             setProcessing(false);
             toast.success('Login Successfully');
         } catch (error) {
-            toast.error(error.message)
+            if (error.response) {
+                toast.error(error.response.data.msg)
+            } else {
+                toast.error(error.message)
+            }
             setProcessing(false);
         }
     }

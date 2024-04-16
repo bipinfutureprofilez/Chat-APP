@@ -8,26 +8,25 @@ const useGetConversations = () => {
 
     const { authUser } = useAuthContext();
     // console.log(loggedUser.token); 
-    
+  const getConversations = async () => {
+    try {
+      const loggedUser = JSON.parse(authUser);
+      const response = await axios.get(
+        "http://localhost:5000/api/users",
+        {
+          headers: {
+            Authorization: `Bearer ${loggedUser.token}`,
+          },
+        }
+      );
+      setConversations(response.data);
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+  }
     
     useEffect(() => {
-        const loggedUser = JSON.parse(authUser);
-        const getConversations = async () => {
-            try {
-                const response = await axios.get(
-                  "http://localhost:5000/api/users",
-                  {
-                    headers: {
-                      Authorization: `Bearer ${loggedUser.token}`,
-                    },
-                  }
-                );
-                setConversations(response.data);
-            } catch (error) {
-                toast.error(error.response.data.msg);
-            }
-        }
-        getConversations()
+        getConversations();
     }, []);
 
     return { conversations };

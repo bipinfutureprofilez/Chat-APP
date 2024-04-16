@@ -13,16 +13,12 @@ const RegisterHook = () => {
         if (!success) return;
         setProcessing(true)
         try {
-            const response = await axios.post(
-              "http://localhost:5000/api/auth/register",
-              { name, email, gender, password, confirmPassword }
-            );
+            const response = await axios.post('http://localhost:5000/api/auth/register', { name, email, gender, password, confirmPassword });
             
-            console.log(response.data);
             localStorage.setItem('chat-user', JSON.stringify(response.data));
             setAuthUser(response.data)
             setProcessing(false)
-            toast.success('Account has beed created!')
+            toast.error('Account has beed created!')
         } catch (error) {
             toast.error(error.response.data.msg)
             setProcessing(false)
