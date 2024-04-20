@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Messages from './Messages';
 import MessageInput from './MessageInput';
+import { useAuthContext } from '../context/AuthContext';
+import useConversation from '../zustand/UseConversation';
 
 export default function MessageContainer() {
 
-  const isSelectedChat  = false;
+  const { selectedConversation, setSelectedConversation } = useConversation();
+  const isSelectedChat = selectedConversation;
 
+  useEffect(() => {
+    return () => setSelectedConversation(null)
+  }, [setSelectedConversation])
 
   return (
     <div className="message-container">
@@ -15,11 +21,11 @@ export default function MessageContainer() {
         <>
           <div className="reciever-data">
             <img
-              src="https://avatar.iran.liara.run/public"
+              src={selectedConversation.profileImage}
               alt="avatar"
               width="40"
             />
-            <h4>Rahul</h4>
+              <h4>{selectedConversation.name}</h4>
           </div>
           <Messages />
           <MessageInput />
@@ -30,10 +36,27 @@ export default function MessageContainer() {
 }
 
 const NoChatSelected = () => {
+
+  const [userName, setUserName] = useState('User');
+  const { authUser } = useAuthContext();
+  
+  const getUserName = async () => {
+    try {
+      const authData = JSON.parse(authUser);
+      setUserName(authData.user.name);
+    } catch (error) {
+      console.error('Failed to parse authUser:', error);
+    }
+  }
+
+  useEffect(() => {
+    getUserName();
+  }, [])
+
   return (
     <>
       <div className="noChatSelected_box">
-        <h4>Welcome User 👋</h4>
+        <h4>Welcome {userName} 👋</h4>
         <h6>Select a chat for messaging...</h6>
         <p>
           <svg

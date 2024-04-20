@@ -33,7 +33,7 @@ const senMessage = async (req, res) => {
 
     await Promise.all([conversation.save(), newMessage.save()]);
 
-    res.status(StatusCodes.CREATED).json({ newMessage });
+    res.status(StatusCodes.CREATED).json(newMessage);
 }
 
 const getMessages = async (req, res, next) => {

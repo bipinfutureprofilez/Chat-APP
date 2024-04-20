@@ -1,11 +1,17 @@
 import React from 'react'
-import useGetConversations from '../hooks/useGetConversations';
+import useConversation from '../zustand/UseConversation';
 
-export default function Conversation({ key, userConversation }) {
+
+
+export default function Conversation({ key_id, userConversation }) {
+
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  const isSelected = selectedConversation?._id === userConversation._id;
   
   return (
     <>
-      <div className="conversatio-item" key={key}>
+      <div className={`conversatio-item ${isSelected ? 'active' : ''}`} key={key_id} onClick={() => setSelectedConversation(userConversation)}>
         <img src={userConversation.profileImage} alt="avatar" width='40' />
         <div className="user-cnt">
           <div className="left-msg">

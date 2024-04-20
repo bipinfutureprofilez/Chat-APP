@@ -14,7 +14,7 @@ export default function Conversations() {
             return (
               conversations[item].map((subItem) => {
                 return (
-                  <Conversation key={subItem._id} userConversation={subItem} />
+                  <Conversation key_id={subItem._id} userConversation={subItem} />
                 )
               })
             )
