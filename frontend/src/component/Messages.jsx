@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Message from './Message'
 import getMessageHook from '../hooks/getMessageHook';
 
 export default function Messages() {
 
   const { messages } = getMessageHook();
-  console.log('messages: ', messages);
+  
+  const lastMessageRef = useRef();
+
+  useEffect(() => {
+    setTimeout(() => {
+      lastMessageRef.current?.scrollIntoView({bahavior: 'smooth'});
+    }, 100);
+  }, [messages])
+
   return (
     <div className="messages-list">
 
@@ -17,7 +25,9 @@ export default function Messages() {
         :
         messages.map((msgItem) => {
           return(
-            <Message keyValue={msgItem._id} messageItem={msgItem} />
+            <div key={msgItem._id} ref={lastMessageRef}>
+              <Message messageItem={msgItem} />
+            </div>
           )
         })
         

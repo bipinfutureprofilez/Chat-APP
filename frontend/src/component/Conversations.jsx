@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Conversation from './Conversation'
 import useGetConversations from '../hooks/useGetConversations';
 
+
 export default function Conversations() {
 
-  const { conversations } = useGetConversations();
+  // const { conversationsUser } = useConversation();
+  const { conversationsUser } = useGetConversations();
 
   return (
     <>
       <div className="chatusers">
         {
-          Object.keys(conversations).map((item) => {
+          Object.keys(conversationsUser).map((item) => {
             return (
-              conversations[item].map((subItem) => {
+              conversationsUser[item].map((subItem) => {
                 return (
                   <Conversation key_id={subItem._id} userConversation={subItem} />
                 )

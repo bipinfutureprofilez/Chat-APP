@@ -136,5 +136,7 @@ label.form-check-label { margin: 0; display: inline-block; }
 .noChatSelected_box h6 { font-size: 16px; color: rgb(255 255 255 / 70%); font-weight: 300; margin-bottom: 12px; } 
 .noChatSelected_box p svg { max-width: 50px; max-height: 50px; }
 
+.noMessage_txt { height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; opacity: 0.5; font-size: 14px; }
 
-
+.message-box.chat-end { flex-direction: row-reverse; text-align: right; } 
+.message-box.chat-end > img { margin-left: 10px; margin-right: 0; }

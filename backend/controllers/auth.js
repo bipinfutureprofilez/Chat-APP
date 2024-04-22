@@ -60,7 +60,7 @@ const login = async (req, res, next) => {
             httpOnly: true,
         })
 
-        res.status(StatusCodes.OK).json({ user: { name: user.name, profileImg: user.profileImage }, token});
+        res.status(StatusCodes.OK).json({ user: { _id: user._id, name: user.name, profileImg: user.profileImage }, token});
 
     } catch (error) {
         next(error)
