@@ -16,7 +16,6 @@ const sendMessageHook = () => {
                     Authorization: `Bearer ${loggedIn.token}`,
                 },
             })
-            console.log(response.data);
             setMessages([...messages, response.data])
         } catch (error) {
             toast.error(error.message)

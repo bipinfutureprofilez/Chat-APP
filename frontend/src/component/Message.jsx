@@ -17,11 +17,12 @@ export default function Message({ messageItem }) {
   const fromMe = messageItem.senderId === loggedUser.user._id;
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profileImg = fromMe ? loggedUser.user.profileImg : selectedConversation.profileImage;
+  const shakeClass = messageItem.shouldShake;
   
   return (
     <div className={`message-box ${chatClassName}`}>
       <img src={profileImg} alt="avatar" width="40" />
-      <div className="msg-cnt-box">
+      <div className={`msg-cnt-box ${shakeClass ? 'shakeMsg' : ''}`}>
         <div className="message">{messageItem.message}</div>
         <div className="msg-time">{msgTime}</div>
       </div>

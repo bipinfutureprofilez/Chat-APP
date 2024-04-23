@@ -1,12 +1,13 @@
 require('express-async-errors')
 require('dotenv').config()
 
+const express = require('express')
+
 const helmet = require('helmet')
 const cors = require('cors')
 const {rateLimit } = require('express-rate-limit')
 
-const express = require('express')
-const app = express()
+const { app, server } = require('./socket/socket');
 
 const cookieParser = require('cookie-parser')
 const limiter = rateLimit({
@@ -55,7 +56,7 @@ app.use(notFound)
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
-        app.listen(PORT, () => console.log(`Server is running at ${PORT}`))
+        server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
     } catch (error) {
         console.log(error);
     }

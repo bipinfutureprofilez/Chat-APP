@@ -16,7 +16,7 @@ export default function Conversations() {
             return (
               conversationsUser[item].map((subItem) => {
                 return (
-                  <Conversation key_id={subItem._id} userConversation={subItem} />
+                  <div key={subItem._id}><Conversation userConversation={subItem} /></div>
                 )
               })
             )
