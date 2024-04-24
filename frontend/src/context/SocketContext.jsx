@@ -12,7 +12,12 @@ export const SocketContextProvider = ({children}) => {
 
     useEffect(() => {
 
-        const loggedUser = JSON.parse(authUser);
+        var loggedUser;
+        if (authUser instanceof Object) {
+            loggedUser = authUser;
+        } else {
+            loggedUser = JSON.parse(authUser);
+        }
 
         if (loggedUser) {
             const socket = io('http://localhost:5000/', {
@@ -33,7 +38,7 @@ export const SocketContextProvider = ({children}) => {
                 setSocket(null);
             }
         }
-    }, [])
+    }, [authUser])
 
     return <SocketContext.Provider value={{ socket, onlineUsers }}>{children}</SocketContext.Provider>
 }

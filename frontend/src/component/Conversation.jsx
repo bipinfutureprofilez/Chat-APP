@@ -11,7 +11,9 @@ export default function Conversation({ userConversation }) {
   const isSelected = selectedConversation?._id === userConversation._id;
   const { onlineUsers } = useSocketContext();
 
-  const isOnline = onlineUsers.includes(userConversation._id)
+  const isOnline = onlineUsers.includes(userConversation._id);
+  console.log('onlineUsers : ', onlineUsers);
+  console.log('isOnline : ', isOnline);
   
   return (
     <>

@@ -11,7 +11,13 @@ const useGetConversations = () => {
     // console.log(loggedUser.token); 
   const getConversations = async (name = '') => {
     try {
-      const loggedUser = JSON.parse(authUser);
+      
+      var loggedUser;
+      if (authUser instanceof Object) {
+        loggedUser = authUser;
+      } else {
+        loggedUser = JSON.parse(authUser);
+      }
       var path = '';
       if (!name || name == '') {
         path = `http://localhost:5000/api/users`;

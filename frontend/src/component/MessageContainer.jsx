@@ -40,18 +40,17 @@ const NoChatSelected = () => {
   const [userName, setUserName] = useState('User');
   const { authUser } = useAuthContext();
   
-  const getUserName = async () => {
-    try {
-      const authData = JSON.parse(authUser);
-      setUserName(authData.user.name);
-    } catch (error) {
-      console.error('Failed to parse authUser:', error);
-    }
-  }
 
   useEffect(() => {
-    getUserName();
-  }, [])
+    var authData;
+    if (authUser instanceof Object) {
+      authData = authUser;
+      setUserName(authData.user.name);
+    } else {
+      authData = JSON.parse(`${authUser}`);
+      setUserName(authData.user.name);
+    }
+  }, [userName])
 
   return (
     <>

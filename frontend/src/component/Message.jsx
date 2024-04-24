@@ -7,13 +7,18 @@ export default function Message({ messageItem }) {
   const { selectedConversation } = useConversation();
   const { authUser } = useAuthContext();
 
-  const loggedUser = JSON.parse(authUser);
   const msgTimeDate = messageItem.createdAt;
   const msgDate = new Date(msgTimeDate);
   const hours = padZero(msgDate.getHours());
   const Minuts = padZero(msgDate.getMinutes());
   const msgTime = `${hours}:${Minuts}`
-
+  
+  var loggedUser;
+  if (authUser instanceof Object) {
+    loggedUser = authUser;
+  } else {
+    loggedUser = JSON.parse(authUser);
+  }
   const fromMe = messageItem.senderId === loggedUser.user._id;
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profileImg = fromMe ? loggedUser.user.profileImg : selectedConversation.profileImage;

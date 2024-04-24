@@ -12,7 +12,12 @@ const getMessageHook = () => {
 
     const fatchMessages = async () => {
         try {
-            const loggedIn = JSON.parse(authUser);
+            var loggedIn;
+            if (authUser instanceof Object) {
+                loggedIn = authUser;
+            } else {
+                loggedIn = JSON.parse(authUser);                
+            }
             const response = await axios.get(`http://localhost:5000/api/message/${selectedConversation._id}`, {
                 headers: {
                     Authorization: `Bearer ${loggedIn.token}`,
