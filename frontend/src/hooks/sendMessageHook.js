@@ -17,7 +17,7 @@ const sendMessageHook = () => {
             } else {
                 loggedIn = JSON.parse(authUser);
             }
-            const response = await axios.post(`http://localhost:5000/api/message/send/${selectedConversation?._id}`, { message }, {
+            const response = await axios.post(`/api/message/send/${selectedConversation?._id}`, { message }, {
                 headers: {
                     Authorization: `Bearer ${loggedIn.token}`,
                 },

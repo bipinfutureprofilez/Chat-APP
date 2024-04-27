@@ -22,7 +22,7 @@ const useGetConversations = () => {
       if (!name || name == '') {
         path = `http://localhost:5000/api/users`;
       } else {
-        path = `http://localhost:5000/api/users?name=${name}`;
+        path = `/api/users?name=${name}`;
       }
       // console.log(path);
       const response = await axios.get(
