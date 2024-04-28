@@ -58,14 +58,26 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
-const start = async () => {
-    try {
-        await connectDB(process.env.MONGO_URI);
-        server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
-    } catch (error) {
-        console.log(error);
-    }
-}
+// const start = async () => {
+//     try {
+//         await connectDB(process.env.MONGO_URI);
+//         server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-start()
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    server.listen(PORT, "0.0.0.0", () =>
+      console.log(`Server is running at ${PORT}`)
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+start();
 
