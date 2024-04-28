@@ -1,6 +1,7 @@
-const path = require('path')
 require('express-async-errors')
 require('dotenv').config()
+
+const path = require('path')
 
 const express = require('express')
 
@@ -30,9 +31,9 @@ const connectDB = require('./db/connect')
 
 app.use(express.json())
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000;
 
-const _dirname = path.resolve();
+// const __dirname = path.resolve();
 
 // router middleware
 const authRouter = require('./routes/auth')
@@ -51,10 +52,10 @@ const errorHanderMiddleware = require('./middleware/errorHandlerMiddleware')
 
 app.use(errorHanderMiddleware)
 // app.use(notFound)
-app.use(express.static(path.join(_dirname, "/frontend/dist")));
+app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(_dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
 const start = async () => {
