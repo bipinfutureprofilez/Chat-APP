@@ -13,7 +13,7 @@ const RegisterHook = () => {
         if (!success) return;
         setProcessing(true)
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', { name, email, gender, password, confirmPassword });
+            const response = await axios.post('/api/auth/register', { name, email, gender, password, confirmPassword });
             
             localStorage.setItem('chat-user', JSON.stringify(response.data));
             setAuthUser(response.data)

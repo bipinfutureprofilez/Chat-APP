@@ -9,7 +9,7 @@ const useLogoutHook = () => {
     const logout = async () => {
         try {
             const response = await axios.post(
-              "http://localhost:5000/api/auth/logout"
+              "/api/auth/logout"
             );
             localStorage.removeItem('chat-user')
             setAuthUser(null)

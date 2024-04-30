@@ -18,7 +18,7 @@ const getMessageHook = () => {
             } else {
                 loggedIn = JSON.parse(authUser);                
             }
-            const response = await axios.get(`http://localhost:5000/api/message/${selectedConversation._id}`, {
+            const response = await axios.get(`/api/message/${selectedConversation._id}`, {
                 headers: {
                     Authorization: `Bearer ${loggedIn.token}`,
                 },

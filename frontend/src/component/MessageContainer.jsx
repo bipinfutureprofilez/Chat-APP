@@ -3,6 +3,7 @@ import Messages from './Messages';
 import MessageInput from './MessageInput';
 import { useAuthContext } from '../context/AuthContext';
 import useConversation from '../zustand/UseConversation';
+import ProfilePic from '../assets/images/pic.png';
 
 export default function MessageContainer() {
 
@@ -21,7 +22,7 @@ export default function MessageContainer() {
         <>
           <div className="reciever-data">
             <img
-              src={selectedConversation.profileImage}
+                src={ProfilePic}
               alt="avatar"
               width="40"
             />

@@ -1,6 +1,7 @@
 import React from 'react'
 import useConversation from '../zustand/UseConversation';
 import { useSocketContext } from '../context/SocketContext';
+import ProfilePic from '../assets/images/pic.png';
 
 
 
@@ -12,13 +13,13 @@ export default function Conversation({ userConversation }) {
   const { onlineUsers } = useSocketContext();
 
   const isOnline = onlineUsers.includes(userConversation._id);
-  console.log('onlineUsers : ', onlineUsers);
-  console.log('isOnline : ', isOnline);
+  // console.log('onlineUsers : ', onlineUsers);
+  // console.log('isOnline : ', isOnline);
   
   return (
     <>
       <div className={`conversatio-item ${isSelected ? 'active' : ''} ${isOnline ? 'online' : ''}`} onClick={() => setSelectedConversation(userConversation)}>
-        <img src={userConversation.profileImage} alt="avatar" width='40'  />
+        <img src={ProfilePic} alt="avatar" width='40'  />
         <div className="user-cnt">
           <div className="left-msg">
             <h4>{userConversation.name}</h4>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import useConversation from '../zustand/UseConversation';
 import { useAuthContext } from '../context/AuthContext';
+import ProfilePic from '../assets/images/pic.png';
 
 export default function Message({ messageItem }) {
 
@@ -26,7 +27,7 @@ export default function Message({ messageItem }) {
   
   return (
     <div className={`message-box ${chatClassName}`}>
-      <img src={profileImg} alt="avatar" width="40" />
+      <img src={ProfilePic} alt="avatar" width="40" />
       <div className={`msg-cnt-box ${shakeClass ? 'shakeMsg' : ''}`}>
         <div className="message">{messageItem.message}</div>
         <div className="msg-time">{msgTime}</div>
