@@ -22,7 +22,12 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", "http://localhost:5000", "https://chat-app-v4w3.onrender.com/"]
+    }
+}));
 app.use(cors());
 app.use(express.json())
 app.use(cookieParser())
