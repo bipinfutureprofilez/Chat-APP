@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const express = require('express')
 
-const helmet = require('helmet')
+// const helmet = require('helmet')
 const cors = require('cors')
 const {rateLimit } = require('express-rate-limit')
 
@@ -22,12 +22,7 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:5000", "https://chat-app-v4w3.onrender.com/"]
-    }
-}));
+app.use(helmet());
 app.use(cors());
 app.use(express.json())
 app.use(cookieParser())
