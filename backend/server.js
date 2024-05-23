@@ -36,7 +36,7 @@ const connectDB = require('./db/connect')
 
 app.use(express.json())
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 2000
 
 // router middleware
 const authRouter = require('./routes/auth')
