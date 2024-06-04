@@ -20,7 +20,7 @@ export const SocketContextProvider = ({children}) => {
         }
 
         if (loggedUser) {
-            const socket = io('http://localhost:5000/', {
+            const socket = io('https://chat-app-ac0y.onrender.com/', {
                 query: {
                     userId: loggedUser.user._id,
                 },
