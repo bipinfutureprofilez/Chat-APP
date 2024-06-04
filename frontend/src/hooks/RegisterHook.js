@@ -18,7 +18,7 @@ const RegisterHook = () => {
             localStorage.setItem('chat-user', JSON.stringify(response.data));
             setAuthUser(response.data)
             setProcessing(false)
-            toast.error('Account has beed created!')
+            toast.success('Account has beed created!')
         } catch (error) {
             toast.error(error.response.data.msg)
             setProcessing(false)

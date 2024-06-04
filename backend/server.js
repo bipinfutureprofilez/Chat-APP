@@ -22,8 +22,14 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
-app.use(helmet());
-app.use(cors());
+app.use(helmet({
+    contentSecurityPolicy: {
+        useDefaults: false,
+    },
+}));
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+}));
 app.use(express.json())
 app.use(cookieParser())
 
