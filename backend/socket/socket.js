@@ -10,7 +10,7 @@ const io = new Server(server, {
     cors: {
         origin: 'https://chat-app-ac0y.onrender.com/',
         methods: ['GET', 'POST']
-    }
+    } 
 });
 
 const getReceiverSocketId = (receiverId) => {
